@@ -1,123 +1,84 @@
-//since these are variables we don't want to ever change in the code, we capitalize them
-var WINDOW_WIDTH = screen.width;
-var WINDOW_HEIGHT = 400;
-var BACKGROUND_COLOR = 204;
+var WINDOW_WIDTH = screen.width - (screen.width/5);
+var WINDOW_HEIGHT = screen.height - (screen.height/4);
+var BACKGROUND_COLOR = 0;
 
-Building testBuilding = new Building(0, random(30, 100));
-//TODO: Create an instance of your Skyline object
+// TODO: Make the buttons work
+// How to button
+// Start button
+
+  Title title = new Title();
 
 
-// This function only runs once at the start of the program
 void setup() {
   size(WINDOW_WIDTH, WINDOW_HEIGHT); //sets the size of the window
   frameRate(30); //how many times the draw function is called per second
 }
 
-// called repeatedly
+
 void draw() {
   background(BACKGROUND_COLOR); //needed in the draw function to "clear" the screen between updates
-  testBuilding.drawAndUpdate();
-  //TODO: Call drawSkyline on your Skyline object
+
+  title.drawTitle();
 
 }
 
-/**
- * Represents one layer of a city skyline, which is a collection of buildings
- * that all move at the same speed.
- */
-class Skyline {
-  ArrayList < Building > buildingList;
-  var xPosition;
+// Title
 
-  /**
-   * Constructs a SkyLine with enough buildings to fill the screen
-   */
-  Skyline() {
-    buildingList = new ArrayList < Building > ();
-    xPosition = 0;
-    fillSkyline(); //when a Skyline is created it automatically has enough buildings to fill the screen
+class Title {
+
+  var xPosition, yPosition, width, height;
+
+  Title() {
+
+    xPosition = WINDOW_WIDTH/2;
+    yPosition = WINDOW_HEIGHT/4;
+    width = WINDOW_WIDTH/20;
+    height = WINDOW_HEIGHT/5;
   }
 
-  void moveSkyline() {
-    //TODO:update and draw the skyline, add buildings as buildings leave the screen
+  void drawTitle(){
+
+    noStroke();
+    fill(color(255, 255, 255));
+    //d
+    rect(xPosition - xPosition/2.5, yPosition, width/2, height);
+    rect(xPosition - xPosition/2.5 - width/1.3, yPosition + height/2, width, height/2);
+    fill(color(0, 0, 0));
+    rect(xPosition - xPosition/2.5 - width/1.7, yPosition + height/4 * 2.7, width/2, width/2);
+    //S
+    fill(color(255, 255, 255));
+    rect(xPosition - xPosition/3.5, yPosition, width * 1.6, height/4);
+    rect(xPosition - xPosition/3.5, yPosition, width/2, height/2);
+    rect(xPosition - xPosition/3.5, yPosition + yPosition/3, width * 1.6, height/4);
+    rect(xPosition - xPosition/3.5 + width * 1.09, yPosition + yPosition/3, width/2, height/2);
+    rect(xPosition - xPosition/3.5, yPosition + yPosition/1.5, width * 1.6, height/4);
+    //T
+    rect(xPosition, yPosition, width/1.5, height + height/3);
+    rect(xPosition - xPosition/10, yPosition, width * 6.25, height/3);
+    //r
+    rect(xPosition + xPosition/8, yPosition + yPosition/2.5, width/4, height/2);
+    rect(xPosition + xPosition/8, yPosition + yPosition/2.5, width * 4, height/5);
+    //y
+    rect(xPosition + xPosition/6, yPosition + yPosition/1.5, width/4, height/3);
+    rect(xPosition + xPosition/6, yPosition + yPosition/1.5 + yPosition/5.5, width, height/10);
+    rect(xPosition + xPosition/6 + xPosition/12, yPosition + yPosition/1.5, width/4, height/1.5);
+    rect(xPosition + xPosition/6, yPosition + yPosition/1.5 + yPosition/2.23, width, height/10);
+    rect(xPosition + xPosition/6, yPosition + yPosition/1.5 + yPosition/3, width/4, height/5);
+    //r
+    rect(xPosition + xPosition/3.5, yPosition + yPosition/1.5, width/4, height/2);
+    rect(xPosition + xPosition/3.5, yPosition + yPosition/1.5, width * 2.4, height/5);
   }
 
-  /**
-   * Draws the skyline, placing it on the screen
-   */
-  void drawSkyline() {
-    //TODO:loop through buildingList and draw each Building
-  }
 
-  /**
-   * Updates the position of each Building in the SkyLine
-   */
-  void update() {
-    //TODO:loop through buildingList and update each Building
-  }
-
-  /**
-   * Adds a building of random building width and then updates
-   * the x position to be the right corner of the building in order
-   * to have the next building not overlap
-   */
-  void addBuilding() {
-    var randomBuildingWidth = random(10, 80);
-    Building currentBuilding = new Building(xPosition, randomBuildingWidth);
-    buildingList.add(currentBuilding);
-    xPosition += randomBuildingWidth;
-  }
-
-
-  void fillSkyline() {
-    //TODO: add enough buildings to fill the screen
-    // hint - use xPosition and WINDOW_WIDTH to figure out when you have
-    //        enough buildings
-    buildingList.add(new Building(0, random(30, 100)));
-  }
 }
 
-/**
-* Represents a building, providing a way to place a building and move
-* it across the screen.
-*/
-class Building {
 
-  var xPosition, yPosition, buildingHeight, buildingWidth;
-  var buildingColor;
+// "How To" button
 
-  /**
-  * Constructs a Building object
-  * @param xPos - the x position of the top left corner of the building
-  * @param bw - the building's width
-  */
-  Building(var xPos, var bw) {
-    buildingHeight = random(30, 250);
-    buildingWidth = bw;
-    xPosition = xPos;
-    buildingColor = color(0, 0, 255);
-  }
-
-  void drawAndUpdate() {
-    var testSpeed = 5;
-    drawBuilding();
-    update(testSpeed);
-  }
-
-  /**
-   * Draws a building always attached to the bottom of the screen
-   */
-  void drawBuilding() {
-    fill(buildingColor);
-    rect(xPosition, WINDOW_HEIGHT - buildingHeight, buildingWidth, buildingHeight);
-  }
-
-  /**
-   * Updates the x position of the building
-   * @param speed - the speed at which the building updates
-   */
-  void update(var speed) {
-    xPosition += speed;
-  }
+class HowTo {
 
 }
+
+
+
+// Start button

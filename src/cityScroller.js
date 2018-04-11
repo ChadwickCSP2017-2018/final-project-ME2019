@@ -7,6 +7,7 @@ var BACKGROUND_COLOR = 0;
 // Start button
 
   Title title = new Title();
+  startButton start = new startButton();
 
 
 void setup() {
@@ -19,6 +20,7 @@ void draw() {
   background(BACKGROUND_COLOR); //needed in the draw function to "clear" the screen between updates
 
   title.drawTitle();
+  start.drawStartButton();
 
 }
 
@@ -53,7 +55,7 @@ class Title {
     rect(xPosition - xPosition/3.5 + width * 1.09, yPosition + yPosition/3, width/2, height/2);
     rect(xPosition - xPosition/3.5, yPosition + yPosition/1.5, width * 1.6, height/4);
     //T
-    rect(xPosition, yPosition, width/1.5, height + height/3);
+    rect(xPosition, yPosition, width/1.5, height + height/2);
     rect(xPosition - xPosition/10, yPosition, width * 6.25, height/3);
     //r
     rect(xPosition + xPosition/8, yPosition + yPosition/2.5, width/4, height/2);
@@ -68,14 +70,35 @@ class Title {
     rect(xPosition + xPosition/3.5, yPosition + yPosition/1.5, width/4, height/2);
     rect(xPosition + xPosition/3.5, yPosition + yPosition/1.5, width * 2.4, height/5);
   }
-
-
 }
 
 
 // "How To" button
 
-class HowTo {
+class startButton {
+
+  var xPosition, yPosition, width, height;
+
+  startButton() {
+
+    xPosition = WINDOW_WIDTH/2;
+    yPosition = WINDOW_HEIGHT/4;
+    width = WINDOW_WIDTH/20;
+    height = WINDOW_HEIGHT/5;
+
+  }
+
+  void drawStartButton() {
+
+    noStroke();
+    fill(color(255, 255, 255));
+    //box
+    rect(xPosition - xPosition/6, yPosition * 2.5, width * 3, height/1.3);
+    //"Start"
+    fill(color(0, 0, 0));
+    textSize(25);
+    text("Press 'space' to start", xPosition - xPosition/6 + xPosition/35, yPosition * 2.5 + yPosition/6, 175, 200);
+  }
 
 }
 
